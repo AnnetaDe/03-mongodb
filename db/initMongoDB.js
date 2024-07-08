@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
-const DB_HOST = require('../config');
+const env = require('../helpers/envFunction');
 
 const initMongoDB = async () => {
   try {
-    // const DB_HOST =
-    //   'mongodb+srv://annetaliss:29248@cluster0.yy6y8we.mongodb.net/my_contacts?retryWrites=true&w=majority&appName=Cluster0';
+    const USER = env('MONGODB_USER');
+    const MONGODB_PASSWORD = env('MONGODB_PASSWORD');
+    const MONGODB_URL = env('MONGODB_URL');
+    const MONGODB_NAME = env('MONGODB_NAME');
+
+    const DB_HOST = `mongodb+srv://${USER}:${MONGODB_PASSWORD}@${MONGODB_URL}.yy6y8we.mongodb.net/${MONGODB_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
+    ('mongodb+srv://annetaliss:29248@cluster0.yy6y8we.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
     await mongoose.connect(DB_HOST);
-    console.log('Database connection successful');
   } catch (err) {
     console.log('error db');
     throw err;

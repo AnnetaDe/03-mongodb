@@ -4,7 +4,8 @@ const cors = require('cors');
 const app = express();
 const initMongoDB = require('./db/initMongoDB');
 const contactsRouter = require('./routes/contactsRouter');
-
+const { configDotenv } = require('dotenv');
+const PORT = configDotenv().parsed.PORT;
 const startServer = () => {
   app.use(morgan('tiny'));
   app.use(cors());
@@ -21,7 +22,7 @@ const startServer = () => {
     res.status(status).json({ message });
   });
 
-  app.listen(3000, () => {
+  app.listen(PORT, () => {
     console.log('Server is on. Use our API on port: 3000');
   });
 };
