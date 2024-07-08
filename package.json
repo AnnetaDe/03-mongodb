@@ -8,11 +8,14 @@
   "dependencies": {
     "cors": "^2.8.5",
     "joi": "^17.11.0",
-    "morgan": "^1.10.0"
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.4.5",
+    "morgan": "^1.10.0",
+    "pino-http": "^10.2.0"
   },
   "devDependencies": {
     "express": "^4.19.2",
-    "nodemon": "^3.0.2",
-    "nanoid": "^3.3.7"
+    "nanoid": "^3.3.7",
+    "nodemon": "^3.0.2"
   }
 }
