@@ -4,23 +4,25 @@ const ContactDB = require('../db/contactsSchema.js');
 
 const getAllContacts = async (req, res) => {
   const result = await ContactDB.find({});
-  console.log(result);
   res.json(result);
 };
 const getOneContact = async (req, res) => {
-  const { _id } = req.params;
-  const result = await contacts.ContactDB.findOne(_id);
+  const { id } = req.params;
+  console.log(req.params);
+
+  const result = await ContactDB.findById({ _id: id });
   if (!result) {
     throw HttpError(404, 'not found');
   }
   res.json(result);
 };
 const deleteContact = async (req, res) => {
-  const { _id } = req.params;
-  const result = await ContactDB.findByIdAndDelete(_id);
+  const { id } = req.params;
+  const result = await ContactDB.findByIdAndDelete({ _id: id });
 };
 const createContact = async (req, res) => {
   const result = await ContactDB.create(req.body);
+  console.log(req.body);
   res.json({
     status: 'success',
     code: 201,
@@ -28,8 +30,9 @@ const createContact = async (req, res) => {
   });
 };
 const updateContact = async (req, res) => {
+  console.log(req.params);
   const { id } = req.params;
-  const result = await ContactDB.findByIdAndUpdate(id, req.body, { new: true });
+  const result = await ContactDB.updateOne(id, req.param);
   if (!result) {
     throw HttpError(404, 'Not found');
   }
@@ -38,7 +41,9 @@ const updateContact = async (req, res) => {
 };
 const updateFavorite = async (req, res) => {
   const { id } = req.params;
-  const result = await ContactDB.findByIdAndUpdate(id, req.body, { new: true });
+  const result = await ContactDB.findByIdAndUpdate({ _id: id }, req.body, {
+    favorite: true,
+  });
   if (!result) {
     throw HttpError(404, 'Not found');
   }

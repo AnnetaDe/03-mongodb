@@ -9,7 +9,7 @@ const {
   updateFavorite,
 } = require('../controllers/contactsControllers');
 
-const schemas = require('../schemas/contactsSchemas');
+const schemas = require('../db/contactsSchema');
 const { validateBody } = require('../helpers/validateBody');
 
 const contactsRouter = express.Router();
@@ -33,7 +33,7 @@ contactsRouter.put(
 );
 contactsRouter.patch(
   '/:id',
-  validateBody(schemas.updateContactSchema),
+  validateBody(schemas.updateFavoriteSchema),
   updateFavorite
 );
 
