@@ -16,15 +16,12 @@ const startServer = () => {
       .status(404)
       .json({ message: 'you are at http://localhost:3000/hello.html' });
   });
-
   app.use((err, req, res, next) => {
     const { status = 500, message = 'Server error' } = err;
     res.status(status).json({ message });
   });
-
-  app.listen(PORT, () => {
-    console.log('Server is on. Use our API on port: 3000');
+  app.listen(3000, () => {
+    console.log('Server is on and OK. Use our API on port: 3000');
   });
 };
-
 module.exports = startServer;

@@ -9,7 +9,6 @@ const initMongoDB = async () => {
     const MONGODB_NAME = env('MONGODB_NAME');
 
     const DB_HOST = `mongodb+srv://${USER}:${MONGODB_PASSWORD}@${MONGODB_URL}.yy6y8we.mongodb.net/${MONGODB_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
-    ('mongodb+srv://annetaliss:29248@cluster0.yy6y8we.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
     await mongoose.connect(DB_HOST);
   } catch (err) {
     console.log('error db');

@@ -9,8 +9,9 @@ const {
   updateFavorite,
 } = require('../controllers/contactsControllers');
 
-const schemas = require('../db/contactsSchema');
-const { validateBody } = require('../helpers/validateBody');
+const { schemas } = require('../db/contactsSchema.js');
+const validateBody = require('../helpers/validateBody');
+const isValidId = require('../helpers/isValidId');
 
 const contactsRouter = express.Router();
 

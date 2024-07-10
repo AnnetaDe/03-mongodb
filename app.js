@@ -5,5 +5,4 @@ const bootstrap = async () => {
   await initMongoDB();
   startServer();
 };
-
 bootstrap();
